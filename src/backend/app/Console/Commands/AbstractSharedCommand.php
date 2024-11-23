@@ -16,6 +16,23 @@ abstract class AbstractSharedCommand extends Command
 
     protected int $EXECUTION_TYPE = self::EXECUTE_FOR_ALL;
 
+
+    /**
+     * Configure the command
+     */
+    protected function configure(): void
+    {
+        parent::configure();
+
+        $this->addOption(
+            'company-id',
+            null,
+            \Symfony\Component\Console\Input\InputOption::VALUE_OPTIONAL,
+            'The ID of the company to run the command for. If not provided, runs for all companies.'
+        );
+    }
+
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var DatabaseProxyManagerService $databaseProxyManagerService */
@@ -62,7 +79,7 @@ abstract class AbstractSharedCommand extends Command
         InputInterface $input,
         OutputInterface $output,
     ): void {
-        $this->info('Running '.$this->name.' for company ID : '.$companyId);
+        $this->info('Running ' . $this->name . ' for company ID : ' . $companyId);
         $databaseProxyManagerService->runForCompany($companyId, function () use ($input, $output) {
             parent::execute($input, $output);
         });
