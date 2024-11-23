@@ -553,5 +553,9 @@
     "week": "Semaine | Hebdomadaire",
     "yes": "Oui",
     "yesterday": "Hier"
+  },
+  "errors": {
+    "alreadyUsedEmail": "Account with email already exists",
+    "emailUserDifferent": "Company and personal email should be different"
   }
 }

@@ -553,5 +553,9 @@
     "week": "ရက်သတf ပတ် | အပတ်စV်",
     "yes": "ဟတု ်/မှန",
     "yesterday": "မေနက့ "
-  }
+  },
+  "errors": {
+     "alreadyUsedEmail": "Account with email already exists",
+     "emailUserDifferent": "Company and personal email should be different"
+   }
 }
