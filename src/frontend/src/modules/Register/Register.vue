@@ -546,7 +546,9 @@ export default {
 
         // set appropriate error message
         if(e?.message === "validation.unique"){
-          this.errorMessage = this.$tc('errors.alreadyUsedEmail')
+          this.errorMessage = this.$tc('errors.alreadyUsedCompanyEmail')
+        } else if (e?.message && e?.message.includes("Integrity constraint violation")){
+          this.errorMessage = this.$tc("errors.alreadyUserAdminEmail")
         }
 
       }

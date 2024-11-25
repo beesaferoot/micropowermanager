@@ -555,7 +555,7 @@
     "yesterday": "မေနက့ "
   },
   "errors": {
-     "alreadyUsedEmail": "Account with email already exists",
-     "emailUserDifferent": "Company contact and personal email should be different"
+    "alreadyUsedCompanyEmail": "Company with email already exists",
+    "alreadyUserAdminEmail": "Admin with email already exists"
    }
 }
