@@ -555,7 +555,7 @@
     "yesterday": "Hier"
   },
   "errors": {
-    "alreadyUsedEmail": "Account with email already exists",
-    "emailUserDifferent": "Company and personal email should be different"
+    "alreadyUsedEmail": "Le compte avec cet e-mail existe déjà",
+    "emailUserDifferent": "L'email de contact de l'entreprise et l'email personnel doivent être différents"
   }
 }
