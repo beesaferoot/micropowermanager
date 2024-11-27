@@ -634,7 +634,9 @@ export default {
   border-radius: 5px;
   padding: 1.3vw;
   margin-top: 1vh;
-  box-shadow: 0 1px 5px -2px rgb(53 53 53 / 30%), 0 0px 4px 0 rgb(0 0 0 / 12%),
+  box-shadow:
+    0 1px 5px -2px rgb(53 53 53 / 30%),
+    0 0px 4px 0 rgb(0 0 0 / 12%),
     0 0px 0px -5px #8e8e8e;
 }
 
