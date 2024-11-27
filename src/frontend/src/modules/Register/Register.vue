@@ -474,7 +474,7 @@ export default {
       },
       successMessage: "",
       succeed: true,
-      errorMessage: this.$tc("phrases.somethingWentWrong")
+      errorMessage: this.$tc("phrases.somethingWentWrong"),
     }
   },
   mounted() {
@@ -545,12 +545,14 @@ export default {
         this.loading = false
 
         // set appropriate error message
-        if(e?.message === "validation.unique"){
-          this.errorMessage = this.$tc('errors.alreadyUsedCompanyEmail')
-        } else if (e?.message && e?.message.includes("Integrity constraint violation")){
+        if (e?.message === "validation.unique") {
+          this.errorMessage = this.$tc("errors.alreadyUsedCompanyEmail")
+        } else if (
+          e?.message &&
+          e?.message.includes("Integrity constraint violation")
+        ) {
           this.errorMessage = this.$tc("errors.alreadyUserAdminEmail")
         }
-
       }
     },
     validUsageType(plugin_usage_type, customer_usage_types) {
@@ -632,9 +634,7 @@ export default {
   border-radius: 5px;
   padding: 1.3vw;
   margin-top: 1vh;
-  box-shadow:
-    0 1px 5px -2px rgb(53 53 53 / 30%),
-    0 0px 4px 0 rgb(0 0 0 / 12%),
+  box-shadow: 0 1px 5px -2px rgb(53 53 53 / 30%), 0 0px 4px 0 rgb(0 0 0 / 12%),
     0 0px 0px -5px #8e8e8e;
 }
 
