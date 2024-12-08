@@ -86,11 +86,11 @@ class PaymentListener {
                 $this->applianceRatePaymentHistoryService->assign();
                 break;
             case $paidFor instanceof Asset:
-                $paymentHistory->paid_for_type = Asset::class;
+                $paymentHistory->paid_for_type = 'appliance';
                 $paymentHistory->paid_for_id = $paidFor->id;
                 break;
             case $paidFor instanceof Token:
-                $paymentHistory->paid_for_type = Token::class;
+                $paymentHistory->paid_for_type = 'token';
                 $paymentHistory->paid_for_id = $paidFor->id;
                 break;
         }

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\MainSettings;
 use App\Models\MaintenanceUsers;
 use App\Models\Meter\Meter;
+use App\Models\Meter\MeterToken;
 use App\Models\Person\Person;
 use App\Models\Token;
 use App\Models\Transaction\AgentTransaction;
@@ -47,6 +48,7 @@ class DemoDataCreator extends AbstractSharedCommand {
         private AirtelTransaction $airtelTransaction,
         private Meter $meter,
         private Token $token,
+        private MeterToken $meterToken,
         private CalinTransaction $calinTransaction,
         private MainSettings $mainSettings,
         private TicketCategory $ticketCategory,
@@ -264,6 +266,22 @@ class DemoDataCreator extends AbstractSharedCommand {
             $token->transaction()->associate($transaction);
             $token->save();
             $transactionData->token = $token;
+
+            // generate meter_token
+            $meterTokenData = [
+                'meter_id' => $randomMeter->id,
+                'token' => Str::random(30),
+                'energy' => round(
+                    $transactionData->transaction->amount /
+                    $randomMeter['tariff']['price'],
+                    2
+                ),
+                'transaction_id' => $transaction->id,
+            ];
+            $meterToken = $this->meterToken->newQuery()->make(['meter_id' => $meterTokenData['meter_id'],
+                'token' => $meterTokenData['token'], '' => $meterTokenData['energy'],
+                'transaction_id' => $meterTokenData['transaction_id']]);
+            $meterToken->save();
 
             // payment event
             event(
