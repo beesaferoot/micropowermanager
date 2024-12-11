@@ -23,8 +23,8 @@
             <md-table-cell
               v-text="moneyFormat(token.transaction.amount)"
             ></md-table-cell>
-            <md-table-cell v-if="token.paid_for_type === 'token'">
-              Token {{ token.paid_for.token }}
+            <md-table-cell v-if="token.paid_for_type === 'App\\Models\\Token'">
+              Token ({{ formatToken(token.paid_for.token) }})
             </md-table-cell>
             <md-table-cell v-else>
               {{ token.paid_for_type }}
@@ -91,6 +91,13 @@ export default {
         this.subscriber,
         this.transactions.tokens.length,
       )
+    },
+    formatToken(token) {
+      // Ensure token is a string
+      const tokenStr = String(token);
+      // Format in the desired pattern
+      // return tokenStr.match(/.{1,4}/g).join('-'); // For "1234-1234-1234"
+      return tokenStr.match(/.{1,3}/g).join(' '); // For "123 412 341 234"
     },
   },
 }
